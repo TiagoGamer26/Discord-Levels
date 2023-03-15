@@ -49,7 +49,7 @@ async def on_message(message):
             content = f.read()
         with open("message_count.txt", "a") as f:
 
-            # Check if the author ID is already in the message_count dictionary
+            
                 
             listeee = []
             for i in lines:
@@ -63,19 +63,19 @@ async def on_message(message):
                 goomba_id = {key: int(value)+1}
                 
             else:
-                #f.write("\n")
+                
                 f.write(f"{str(author_id)}_{str(server_id)}: 1*")
                 goomba_id = f"{str(author_id)}_{str(server_id)}: 1"
-                #f.write("\n")
+                
                 key, value = goomba_id.split(": ")
                 goomba_id = {key: value}
                 
         if goomba == True:
             with open("message_count.txt", "w") as f:
                 content = content.replace(f"{str(author_id)}_{str(server_id)}: {value}", f"{key}: {int(value)+1}")
-                #f.write("\n")
+                
                 f.write(content)
-                #f.write("\n")
+                
         with open("levels.txt", "r") as f:
             lines = f.readlines()
             if lines != []:
@@ -90,7 +90,7 @@ async def on_message(message):
                         ia = i.split(":")
                     else:
                         continue
-                    # if ia[0] + ": " + str(goomba_id[f"{str(author_id)}_{str(server_id)}"]) == str(goomba_id):
+                    
                     if ia[0] in str(goomba_id):
                         found = True
                         key, value = i.split(": ")
@@ -114,9 +114,7 @@ async def on_message(message):
         with open("levels.txt", "w") as f:
                 contents = contents.replace(f"{str(author_id)}_{str(server_id)}: {current}", f"{str(author_id)}_{str(server_id)}: {int(level)//5}")
                 f.write(contents)
-                #f.write("\n")
-        #with open("levels.txt", "a") as f:
-        #    f.write("\n")
+                
     except Exception as e:
         print(e)
 
